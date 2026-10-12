@@ -1,0 +1,87 @@
+:root {
+  --bg: #eef1f4;
+  --panel: #ffffff;
+  --ink: #17232e;
+  --muted: #5d6b78;
+  --line: #d5dce3;
+  --accent: #0e6b73;
+  --accent-ink: #ffffff;
+  --err: #a52a2a;
+  --err-bg: #fbeaea;
+  --ok-bg: #e3f3ec;
+  --ok: #17603f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  line-height: 1.5;
+}
+.app { max-width: 1280px; margin: 0 auto; padding: 24px 20px 48px; }
+.top h1 { margin: 0; font-size: 1.6rem; font-weight: 600; letter-spacing: -0.01em; }
+.top p { margin: 4px 0 20px; color: var(--muted); }
+
+.layout { display: grid; grid-template-columns: 340px 1fr; gap: 20px; align-items: start; }
+@media (max-width: 960px) { .layout { grid-template-columns: 1fr; } }
+
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 20px; }
+.panel h2 { margin: 0 0 16px; font-size: 1.05rem; font-weight: 600; }
+.list-header { display: flex; flex-direction: column; gap: 12px; }
+.count { color: var(--muted); font-weight: 400; margin-left: 6px; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.filter-button {
+  border: 1px solid var(--line); background: #f7f9fb; color: var(--ink); border-radius: 999px;
+  padding: 7px 12px; font: inherit; cursor: pointer; transition: all 0.15s ease;
+}
+.filter-button.active {
+  background: var(--accent); color: var(--accent-ink); border-color: var(--accent);
+}
+
+label { display: block; margin-bottom: 14px; font-size: 0.88rem; font-weight: 500; }
+input, select, textarea {
+  display: block; width: 100%; margin-top: 4px; padding: 8px 10px;
+  font: inherit; color: inherit; background: #fff;
+  border: 1px solid var(--line); border-radius: 4px;
+}
+textarea { resize: vertical; }
+input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 1px;
+}
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+button.primary {
+  width: 100%; padding: 10px; font: inherit; font-weight: 600; cursor: pointer;
+  background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 4px;
+}
+button.primary:disabled { opacity: 0.6; cursor: wait; }
+
+.banner { padding: 10px 14px; border-radius: 4px; margin-bottom: 16px; font-size: 0.92rem; }
+.banner.error { background: var(--err-bg); color: var(--err); }
+.banner.ok { background: var(--ok-bg); color: var(--ok); }
+.errores { margin: 0 0 14px; padding: 10px 10px 10px 28px; background: var(--err-bg); color: var(--err); border-radius: 4px; font-size: 0.88rem; }
+
+.empty { color: var(--muted); margin: 0; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th { text-align: left; font-weight: 500; color: var(--muted); padding: 8px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td { padding: 12px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+td select { margin: 0; padding: 5px 8px; font-size: 0.86rem; min-width: 130px; }
+.id { font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--muted); }
+.sub { display: block; color: var(--muted); font-size: 0.82rem; }
+.desc { display: block; margin-top: 4px; max-width: 360px; color: var(--ink); font-size: 0.84rem;
+  overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.fecha { white-space: nowrap; color: var(--muted); font-size: 0.82rem; }
+
+.chip { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 0.8rem; font-weight: 500; border: 1px solid transparent; }
+.p-baja { background: #e8eef3; color: #3d5265; }
+.p-media { background: #e6f0fb; color: #1f4f8a; }
+.p-alta { background: #fdf0d9; color: #85500a; }
+.p-critica { background: #fbe3e3; color: #962222; }
+
+select.estado { font-weight: 500; }
+.e-nuevo { border-left: 4px solid #1f4f8a; }
+.e-en-proceso { border-left: 4px solid #c27c0e; }
+.e-resuelto { border-left: 4px solid #2f8f5b; }
+.e-cerrado { border-left: 4px solid #7b8794; }
